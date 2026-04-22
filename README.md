@@ -67,8 +67,7 @@ All Virtual Machines communicate over a VMware host-only network (VMnet2) config
 
 ----
 
-##Network Topology
-
+## Network Topology
 Remote Client (192.168.56.20)
 |
 | WireGuard tunnel (UDP 51820) and OpenVPN (UDP 1194)
