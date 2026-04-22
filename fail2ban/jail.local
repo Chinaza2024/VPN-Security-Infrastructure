@@ -1,0 +1,53 @@
+# Fail2ban Jail Configuration
+# Apocalyptic Accounting Group Limited
+# Place at /etc/fail2ban/jail.local
+
+[DEFAULT]
+# Ban duration in seconds — 3600 = 1 hour
+bantime  = 3600
+
+# Time window to count failures in seconds — 600 = 10 minutes
+findtime = 600
+
+# Number of failures before ban
+maxretry = 5
+
+# Email alerting — configure if email alerts are needed
+# destemail = admin@yourcompany.com
+# sendername = Fail2ban
+# mta = sendmail
+# action = %(action_mwl)s
+
+# ─── SSH Protection ────────────────────────────────────────────
+
+[sshd]
+enabled  = true
+port     = ssh
+filter   = sshd
+backend  = systemd
+maxretry = 5
+bantime  = 3600
+findtime = 600
+
+# ─── OpenVPN Protection ────────────────────────────────────────
+
+[openvpn]
+enabled  = true
+port     = 1194
+protocol = udp
+filter   = openvpn
+logpath  = /var/log/openvpn/openvpn.log
+maxretry = 5
+bantime  = 3600
+findtime = 600
+
+# ─── Optional — stronger settings for production ───────────────
+# Increase bantime to 24 hours for persistent attackers
+# [sshd-aggressive]
+# enabled  = true
+# port     = ssh
+# filter   = sshd
+# backend  = systemd
+# maxretry = 3
+# bantime  = 86400
+# findtime = 300
