@@ -18,8 +18,11 @@ In the project, we replace a legacy commercial VPN solution with a zero-cost ope
 This project was built using and running three Virtual Machines in our virtual environment (VMWare Workstation):
 
 | VM |                | OS (Operating System) |    | Role |   | IP address |
+---
 | OPNsense Firewall |  | FreeBSD |         | Perimeter firewall + Suricata IDS |  | 192.168.56.1 |
+---
 | VPN Server|         | Ubuntu 22.04 LTS |  | WireGuard + OpenVPN + Fail2ban + AI agent |  | 192.168.56.10 |
+---
 | Client |         | Ubuntu 22.04 |  | Remote worker simulation | | 192.168.56.20 |
 
 All Virtual Machines communicate over a VMware host-only network (VMnet2) configuration at 192.168.56.0/24. The VPN server and OPNsense firewall have an additional NAT adapter for Internet access.
