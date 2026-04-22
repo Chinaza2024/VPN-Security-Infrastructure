@@ -225,21 +225,6 @@ sudo fail2ban-client status sshd
 
 ---
 
-## Project Structure
-vpn-security-infrastructure/
-├── README.md               — this file
-├── LICENSE                 — MIT license
-├── agent/
-│   └── agent.py            — AI monitoring agent
-├── configs/
-│   ├── wireguard/          — WireGuard config examples
-│   ├── openvpn/            — OpenVPN server config example
-│   └── fail2ban/           — Fail2ban jail config
-├── docs/                   — architecture diagrams
-└── screenshots/            — evidence screenshots
-
----
-
 ## Tools and Technologies
 
 | Tool | Version | Purpose |
