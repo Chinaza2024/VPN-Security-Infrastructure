@@ -1,0 +1,41 @@
+# OpenVPN Client Configuration
+# Replace YOUR_VPN_SERVER_IP with the actual server IP
+# Replace certificate blocks with actual certificate contents
+
+client
+dev tun
+proto udp
+remote YOUR_VPN_SERVER_IP 1194
+resolv-retry infinite
+nobind
+persist-key
+persist-tun
+
+# Encryption — must match server
+data-ciphers AES-256-GCM:AES-128-GCM:CHACHA20-POLY1305
+
+# Certificate verification
+remote-cert-tls server
+
+verb 3
+
+# Inline certificates — paste full contents between tags
+<ca>
+-----BEGIN CERTIFICATE-----
+PASTE YOUR CA CERTIFICATE HERE
+-----END CERTIFICATE-----
+</ca>
+
+<cert>
+-----BEGIN CERTIFICATE-----
+PASTE YOUR CLIENT CERTIFICATE HERE
+# Note: only paste from BEGIN CERTIFICATE onwards
+# Omit any human-readable text above the certificate block
+-----END CERTIFICATE-----
+</cert>
+
+<key>
+-----BEGIN PRIVATE KEY-----
+PASTE YOUR CLIENT PRIVATE KEY HERE
+-----END PRIVATE KEY-----
+</key>
