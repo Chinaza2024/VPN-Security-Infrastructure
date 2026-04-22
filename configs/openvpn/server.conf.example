@@ -1,0 +1,39 @@
+# OpenVPN Server Configuration
+# Apocalyptic Accounting Group Limited
+# Replace all placeholder values before use
+
+port 1194
+proto udp
+dev tun
+
+# Certificate and key paths
+ca   /etc/openvpn/server/ca.crt
+cert /etc/openvpn/server/server.crt
+key  /etc/openvpn/server/server.key
+dh   /etc/openvpn/server/dh.pem
+
+# VPN subnet — clients will receive IPs from this range
+server 10.9.0.0 255.255.255.0
+
+# Push routes to clients
+push "redirect-gateway def1 bypass-dhcp"
+push "dhcp-option DNS 8.8.8.8"
+
+# Connection keepalive
+# Ping every 10 seconds, restart if no response in 120 seconds
+keepalive 10 120
+
+# Encryption — OpenVPN 2.6+ syntax
+data-ciphers AES-256-GCM:AES-128-GCM:CHACHA20-POLY1305
+
+# Persistence
+persist-key
+persist-tun
+
+# Logging
+verb 3
+log-append /var/log/openvpn/openvpn.log
+
+# Run as nobody for reduced privileges in production
+# user nobody
+# group nogroup
