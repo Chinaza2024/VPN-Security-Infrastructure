@@ -1,0 +1,28 @@
+# Private keys — never commit these
+*.key
+*.pem
+*.crt
+*.ovpn
+
+# API keys and environment files
+.env
+.bashrc
+*.env
+
+# AI agent reports — contain log data
+vpn_agent/reports/
+*.md.bak
+
+# System files
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+
+# VMware files
+*.vmdk
+*.vmx
+*.vmxf
+*.vmsd
+*.nvram
+*.log
