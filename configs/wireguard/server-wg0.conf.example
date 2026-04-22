@@ -1,0 +1,10 @@
+[Interface]
+Address = 10.8.0.1/24
+ListenPort = 51820
+PrivateKey = YOUR_SERVER_PRIVATE_KEY_HERE
+PostUp   = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o YOUR_NAT_INTERFACE -j MASQUERADE
+PostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -t nat -D POSTROUTING -o YOUR_NAT_INTERFACE -j MASQUERADE
+
+[Peer]
+PublicKey = YOUR_CLIENT_PUBLIC_KEY_HERE
+AllowedIPs = 10.8.0.2/32
